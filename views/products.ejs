@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Add Products</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+   <style media="screen">
+     .root{
+       margin-left:30%;
+       margin-right:30%;
+       margin-top:10%;
+       background-color:aqua;
+       padding:20px 20px;
+       border-radius:2%;
+       border:3px solid white;
+     }
+   </style>
+
+
+  </head>
+  <body style="background-color: gray">
+    <p id="response"></p>
+    <div  class="root">
+      <input type="text" id="productname" class="form-control" placeholder="Product name"><br>
+      <input type="text" id="productid" class="form-control" placeholder="Product Id"><br>
+      <input type="text" id="prize" class="form-control" placeholder="Prize"><br>
+      <button type="button" class="btn btn-block btn-success" onclick="func()">Add Product</button>
+    </div>
+  </body>
+  <script type="text/javascript">
+    function func(){
+      var Data = {name:"aravind",roll:"82288282"};
+      axios({
+        method:"POST",
+        url:"/products/addproduct",
+        data:{
+          name:"samudrala aravind",
+          email:"hello@email.com"
+        }
+      }).then((resp)=>{console.log(resp)},(err)=>{console.log(err)});
+    }
+  </script>
+</html>

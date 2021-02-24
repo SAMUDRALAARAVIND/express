@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="/font-awesome/css/all.css">
+    <link href="/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="/jquery.min.js"></script>
+    <script src="/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+    <style>
+        .root{
+            margin-top: 10%;
+            margin-bottom: 10%;
+            background-color:white;
+            height:500px;
+            width:70%;
+            border-radius: 6%;            
+        }
+        .usertop{
+            padding:3% 4% 3% 4%;
+            background-color:blue;
+            color:white;
+            width:100%;
+        }
+        .sameclass{
+            margin:10% 205 10% 20%;
+        }
+        .chatarea{
+            height:440px;
+            background-color: violet;
+            padding-right: 20px;
+            padding-left: 20px;
+        }
+        .typemessage{
+            width:100%;
+            border:0;
+            border-bottom: 1px solid black;
+            padding:5px 5px 5px 5px;
+        }
+        .typemessage:hover{
+            border:0;
+            border-bottom: 2px solid green;
+
+        }
+        .left{
+            padding:12px 12px 12px 12px;
+            float: left;
+            border-radius: 2%;
+            background-color: #e7e7e7;
+            border-top-right-radius: 30%;
+            border-bottom-left-radius: 30%;
+            border-bottom-right-radius: 30%;
+            border:1px solid black;
+        }
+        .right{
+            padding:12px 12px 12px 12px;
+            float: right;
+            border:1px solid black;
+            border-top-left-radius: 30%;
+            border-bottom-left-radius: 30%;
+            border-bottom-right-radius: 30%;
+            background-color: #e7e7e7;
+        }
+    </style>
+</head>
+<body style="background-color: #e7e7e7;">
+    <div class="container">
+        <p id="result"></p>
+       <input type="text" placeholder="username" class="form-control" id="source"/><br>
+       <input type="text" placeholder="Destination" class="form-control" id="dest"><br>
+       <button type="submit" id="setusername" class="btn-block">Set Username</button><br>
+       <input type="text" placeholder="Message here" id="message" class="form-control"><br>
+       <button id="btn" type="submit" class="btn-block">send message</button>
+</body>
+<script>
+    $(document).ready(()=>{
+        var socket = io();
+        $("#btn").click(()=>{
+            $("#result").html("clicked button");
+            socket.emit("event",{name:"aravind",class:"class"});
+        });
+        socket.on("event",(data)=>{
+            $("#result").html("server responded");
+            $("#result").html(`The response from server is ${JSON.stringify(data)} Your username is:`);
+            console.log(`${JSON.stringify(username)}`);
+        })
+    });
+</script>
+</html>

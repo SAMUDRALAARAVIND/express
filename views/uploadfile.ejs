@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/font-awesome/css/all.css">
+    <link href="/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="/jquery.min.js"></script>
+    <script src="/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+    <title>Upload video</title>
+    <style>
+        .icon{
+            cursor:pointer;
+            width: 10px;
+            height: 10px;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <input type="file" id="real-file" hidden="hidden"><br>
+        <div id="btn"  class="icon">
+            <i class="fas fa-plus-circle fa-3x" ></i>
+        </div><br><br>
+        <p id="text">No file Chosen!</p>
+    </div>
+    <script>
+        var realButton =document.getElementById("real-file");
+        var virtualButton = document.getElementById("btn");
+        var fileName = document.getElementById("text");
+        virtualButton.addEventListener("click",()=>{
+            realButton.click();
+        });
+        realButton.addEventListener("click",()=>{
+            console.log("clicked buton");
+        });
+        realButton.addEventListener("change",()=>{
+            if(realButton.value){
+                var x=realButton.value.split('\\');
+                fileName.innerHTML = x[x.length-1];
+            }
+            else
+                fileName.innerHTML = "No file chosen!";
+        });
+    </script>
+</body>
+</html>
